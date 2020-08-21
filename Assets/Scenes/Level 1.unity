@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -679,6 +679,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 526646602}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1140264524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1099515546293546202, guid: 01acfe9e8d93c3b40ab9f273a519e26d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1876662193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1140264528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140264524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9346630fe0e4f14682ff074d83e527a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {x: 0, y: -20, z: 0}
+  period: 10
+  movementFactor: 0
 --- !u!1001 &1270882121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1110,7 +1131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 579423060, guid: 6b7617d2f747cd446959b67c13fe79ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.23
+      value: -24.18
       objectReference: {fileID: 0}
     - target: {fileID: 579423060, guid: 6b7617d2f747cd446959b67c13fe79ff, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1151,6 +1172,26 @@ PrefabInstance:
     - target: {fileID: 579423060, guid: 6b7617d2f747cd446959b67c13fe79ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420137003, guid: 6b7617d2f747cd446959b67c13fe79ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420137004, guid: 6b7617d2f747cd446959b67c13fe79ff, type: 3}
+      propertyPath: m_SpotAngle
+      value: 33.591637
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420137004, guid: 6b7617d2f747cd446959b67c13fe79ff, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420137004, guid: 6b7617d2f747cd446959b67c13fe79ff, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420137004, guid: 6b7617d2f747cd446959b67c13fe79ff, type: 3}
+      propertyPath: m_Range
+      value: 39.676216
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b7617d2f747cd446959b67c13fe79ff, type: 3}
@@ -1235,20 +1276,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: Directional Light
       objectReference: {fileID: 0}
+    - target: {fileID: 4205817485156027690, guid: 843ba9950bb922942afd7965c90397fd,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205817485156027690, guid: 843ba9950bb922942afd7965c90397fd,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205817485156027690, guid: 843ba9950bb922942afd7965c90397fd,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205817485156027690, guid: 843ba9950bb922942afd7965c90397fd,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4205817485156027691, guid: 843ba9950bb922942afd7965c90397fd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 65.1
+      value: 2172
       objectReference: {fileID: 0}
     - target: {fileID: 4205817485156027691, guid: 843ba9950bb922942afd7965c90397fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17
+      value: 705
       objectReference: {fileID: 0}
     - target: {fileID: 4205817485156027691, guid: 843ba9950bb922942afd7965c90397fd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 54.7
+      value: 5324
       objectReference: {fileID: 0}
     - target: {fileID: 4205817485156027691, guid: 843ba9950bb922942afd7965c90397fd,
         type: 3}

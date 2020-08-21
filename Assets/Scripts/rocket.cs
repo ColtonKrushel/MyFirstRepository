@@ -11,9 +11,17 @@ public class rocket : MonoBehaviour
 
     [SerializeField] float rcsThrust = 100f;
     [SerializeField] float mainThrust = 100f;
+    [SerializeField] float levelLoadDelay = 3f;
+
     [SerializeField] AudioClip mainEngine;
     [SerializeField] AudioClip death;
     [SerializeField] AudioClip success;
+
+    [SerializeField] ParticleSystem mainEngineParticles;
+    [SerializeField] ParticleSystem deathParticles;
+    [SerializeField] ParticleSystem successParticles;
+
+    bool collisionsEnabled = true;
  
     enum State { Alive, Dying, Transcending }
     State state = State.Alive;
@@ -28,6 +36,11 @@ public class rocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Debug.isDebugBuild)
+        {
+            debugKeys();
+        }
+
         if (state == State.Alive)
         {
             Thrust();
@@ -35,8 +48,23 @@ public class rocket : MonoBehaviour
         }
     }
 
+    private void debugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextScene();
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            collisionsEnabled = !collisionsEnabled;
+        }
+    }
+
     void OnCollisionEnter(Collision collision)
     {
+        if(state != State.Alive || !collisionsEnabled) { return; }
+
         switch (collision.gameObject.tag)
         {
             case "Friendly":
@@ -56,7 +84,8 @@ public class rocket : MonoBehaviour
         state = State.Transcending;
         audioSource.Stop();
         audioSource.PlayOneShot(success);
-        Invoke("LoadNextScene", 3f);
+        successParticles.Play();
+        Invoke("LoadNextScene", levelLoadDelay);
     }
 
     private void deathStart()
@@ -64,7 +93,8 @@ public class rocket : MonoBehaviour
         state = State.Dying;
         audioSource.Stop();
         audioSource.PlayOneShot(death);
-        Invoke("LoadFirstLevel", 3f);
+        deathParticles.Play();
+        Invoke("LoadFirstLevel", levelLoadDelay);
     }
 
     private void LoadFirstLevel()
@@ -74,7 +104,14 @@ public class rocket : MonoBehaviour
     
     private void LoadNextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     private void Rotate()
@@ -107,6 +144,7 @@ public class rocket : MonoBehaviour
         else
         {
             audioSource.Stop();
+            mainEngineParticles.Stop();
         }
         
     }
@@ -118,5 +156,6 @@ public class rocket : MonoBehaviour
         {
             audioSource.PlayOneShot(mainEngine);
         }
+        mainEngineParticles.Play();
     }
 }
